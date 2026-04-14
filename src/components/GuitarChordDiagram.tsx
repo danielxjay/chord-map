@@ -56,8 +56,8 @@ export function GuitarChordDiagram({ chordLabel, strings, voicingLabel }: Guitar
         </div>
 
         <div className="guitar-diagram__labels">
-          {['E', 'A', 'D', 'G', 'B', 'E'].map((label) => (
-            <span key={label}>{label}</span>
+          {['E', 'A', 'D', 'G', 'B', 'E'].map((label, index) => (
+            <span key={`${label}-${index}`}>{label}</span>
           ))}
         </div>
       </div>
@@ -82,4 +82,3 @@ export function GuitarChordDiagram({ chordLabel, strings, voicingLabel }: Guitar
     </section>
   );
 }
-

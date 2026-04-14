@@ -33,6 +33,18 @@ npm run dev
 
 Vite will usually serve the app at `http://localhost:5173`.
 
+Run the test suite:
+
+```bash
+npm run test
+```
+
+Run tests once in CI mode:
+
+```bash
+npm run test:run
+```
+
 ## Production Build
 
 Create the production bundle:
