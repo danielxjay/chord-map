@@ -6,7 +6,7 @@ function requestPlaybackAudioSession() {
   }
 
   try {
-    navigator.audioSession.type = 'playback';
+    navigator.audioSession.type = 'transient';
   } catch {
     // Ignore unsupported or rejected audio-session hints and continue with playback.
   }
