@@ -473,7 +473,7 @@ button {
   position: relative;
   width: fit-content;
   max-width: 100%;
-  padding-top: 0.25rem;
+  margin-top: 0.25rem;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -501,8 +501,48 @@ button {
 }
 
 .key--white {
+  position: relative;
   height: 10.5rem;
   background: linear-gradient(180deg, #fffdfa, #f3eadc);
+}
+
+.key__label {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.key__label--passive {
+  color: rgba(47, 36, 27, 0.25);
+}
+
+.key__label--active {
+  color: var(--accent-deep);
+}
+
+.key--black .key__label {
+  bottom: 0.35rem;
+  font-size: 0.5rem;
+  color: rgba(255, 248, 240, 0.85);
+}
+
+.key__octave {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: rgba(47, 36, 27, 0.2);
+  line-height: 1;
+  pointer-events: none;
 }
 
 .key--black {
