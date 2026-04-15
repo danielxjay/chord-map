@@ -17,8 +17,10 @@
   --grid-line: rgba(77, 52, 34, 0.22);
   --grid-line-nut: rgba(77, 52, 34, 0.45);
   --key-border: rgba(77, 52, 34, 0.18);
+  --key-black-border: rgba(255, 255, 255, 0.04);
   --key-white-bg: linear-gradient(180deg, #fffdfa, #f3eadc);
   --key-black-bg: linear-gradient(180deg, #3e332d, #1d1714);
+  --label-active: #8d3d1e;
   --tab-bg: rgba(49, 36, 27, 0.94);
   --tab-text: #ffe7d5;
   --label-passive: rgba(47, 36, 27, 0.25);
@@ -566,7 +568,7 @@ button {
 }
 
 .key__label--active {
-  color: var(--accent-deep);
+  color: var(--label-active);
 }
 
 .key--black .key__label {
@@ -594,7 +596,7 @@ button {
   width: calc(var(--white-key-width) * 0.62);
   height: 6.4rem;
   background: var(--key-black-bg);
-  border-color: rgba(255, 255, 255, 0.04);
+  border-color: var(--key-black-border);
   transform: translateX(calc(var(--white-key-width) * -0.31));
 }
 
@@ -850,13 +852,19 @@ button {
   --surface-active: linear-gradient(145deg, rgba(224, 120, 72, 0.22), rgba(36, 28, 20, 0.95));
   --grid-line: rgba(255, 190, 140, 0.13);
   --grid-line-nut: rgba(255, 190, 140, 0.4);
-  --key-border: rgba(255, 200, 150, 0.1);
-  --key-white-bg: linear-gradient(180deg, #3a3028, #2c2318);
-  --key-black-bg: linear-gradient(180deg, #181410, #0d0b08);
+  --key-border: rgba(255, 200, 150, 0.08);
+  --key-black-border: rgba(100, 70, 40, 0.2);
+  --key-white-bg: linear-gradient(180deg, #2a2218, #1a1510);
+  --key-black-bg: linear-gradient(180deg, #f0e8da, #dfd4c2);
   --tab-bg: rgba(7, 4, 2, 0.97);
   --tab-text: #f0d5b8;
   --label-passive: rgba(255, 220, 180, 0.2);
   --label-octave: rgba(255, 220, 180, 0.15);
+  --label-active: #2a1c10;
+}
+
+[data-theme="dark"] .key--black .key__label {
+  color: rgba(30, 20, 10, 0.65);
 }
 
 [data-theme="dark"] .hero-card {
