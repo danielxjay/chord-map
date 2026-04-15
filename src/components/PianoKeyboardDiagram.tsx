@@ -25,7 +25,8 @@ export function PianoKeyboardDiagram({ activeMidiNotes, noteLabels }: PianoKeybo
         <span className="tag">{noteLabels.join(' • ')}</span>
       </div>
 
-      <div className="keyboard-shell">
+      {/* Chord tones are conveyed as text in the tag above; the keyboard is decorative. */}
+      <div className="keyboard-shell" aria-hidden="true">
         <div
           className="keyboard keyboard--white"
           style={{ gridTemplateColumns: `repeat(${whiteKeys.length}, var(--white-key-width))` }}

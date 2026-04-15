@@ -54,7 +54,8 @@ export function GuitarChordDiagram({
           </p>
         ) : null}
 
-        <div className="guitar-diagram__top">
+        {/* The tab output below is the accessible text form; the visual diagram is decorative. */}
+        <div className="guitar-diagram__top" aria-hidden="true">
           {strings.map((fret, index) => (
             <span key={`marker-${index}`} className="guitar-diagram__marker">
               {fret === null ? 'x' : fret === 0 ? 'o' : ''}
@@ -62,7 +63,7 @@ export function GuitarChordDiagram({
           ))}
         </div>
 
-        <div className={`guitar-diagram__frame ${baseFret > 1 ? 'guitar-diagram__frame--offset' : ''}`}>
+        <div className={`guitar-diagram__frame ${baseFret > 1 ? 'guitar-diagram__frame--offset' : ''}`} aria-hidden="true">
           {baseFret > 1 ? <span className="guitar-diagram__base-fret">{baseFret}fr</span> : null}
           <div
             className="guitar-diagram__grid"
@@ -87,7 +88,7 @@ export function GuitarChordDiagram({
           </div>
         </div>
 
-        <div className="guitar-diagram__labels">
+        <div className="guitar-diagram__labels" aria-hidden="true">
           {['E', 'A', 'D', 'G', 'B', 'E'].map((label, index) => (
             <span key={`${label}-${index}`}>{label}</span>
           ))}
@@ -95,7 +96,7 @@ export function GuitarChordDiagram({
       </div>
 
       <div className="detail-block">
-        <pre className="tab-panel">
+        <pre className="tab-panel" aria-label={`${chordLabel} guitar tab`}>
           <code>{tabLines.join('\n')}</code>
         </pre>
       </div>
