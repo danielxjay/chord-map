@@ -118,7 +118,7 @@ export const CHORD_TYPES: ChordType[] = [
     id: 'dim',
     suffix: 'dim',
     label: 'Diminished',
-    description: 'Compressed triad with a flattened fifth.',
+    description: 'Minor triad with a flattened fifth.',
     intervals: [
       { degree: 1, semitones: 0, label: '1' },
       { degree: 3, semitones: 3, label: 'b3' },
