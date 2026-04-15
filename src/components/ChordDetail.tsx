@@ -1,7 +1,6 @@
 import {
   formatIntervalSet,
   getAlternateChordLabel,
-  getAlternateLongFormChordLabel,
   getChordLabel,
   getLongFormChordLabel,
 } from '../lib/chords';
@@ -36,7 +35,6 @@ export function ChordDetail({
   const chordLabel = getChordLabel(root, chordType);
   const alternateChordLabel = getAlternateChordLabel(root, chordType);
   const longFormChordLabel = getLongFormChordLabel(root, chordType);
-  const alternateLongFormChordLabel = getAlternateLongFormChordLabel(root, chordType);
 
   return (
     <section className="detail-layout">
@@ -47,10 +45,7 @@ export function ChordDetail({
             {chordLabel}
             {alternateChordLabel ? <span className="hero-card__alternate"> ({alternateChordLabel})</span> : null}
           </h2>
-          <p className="hero-card__long-name">
-            {longFormChordLabel}
-            {alternateLongFormChordLabel ? ` (${alternateLongFormChordLabel})` : ''}
-          </p>
+          <p className="hero-card__long-name">{longFormChordLabel}</p>
           <p className="hero-card__description">{chordType.description}</p>
         </div>
 

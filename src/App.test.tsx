@@ -75,7 +75,7 @@ describe('App', () => {
 
     expect(screen.getByRole('heading', { level: 2, name: /^C#min\b/i })).toBeInTheDocument();
     expect(screen.getByText('(Dbmin)')).toBeInTheDocument();
-    expect(screen.getByText('C-sharp minor (D-flat minor)')).toBeInTheDocument();
+    expect(screen.getByText('C-sharp minor')).toBeInTheDocument();
     expect(screen.getAllByText('C# • E • G#').length).toBeGreaterThan(0);
   });
 });
