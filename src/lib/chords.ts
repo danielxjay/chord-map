@@ -94,6 +94,8 @@ export function spellChordNotes(root: RootNote, chordType: ChordType): string[] 
     const letterOffset = (interval.degree - 1) % 7;
     const targetLetter = LETTER_SEQUENCE[(rootLetterIndex + letterOffset) % LETTER_SEQUENCE.length];
     const naturalPitchClass = NATURAL_PITCH_CLASS[targetLetter];
+    // +18 prevents a negative modulo result; subtracting 6 centres the range at 0
+    // so the result maps to: -1 = flat, 0 = natural, 1 = sharp (or ±2 for doubles).
     let accidental = ((targetPitchClass - naturalPitchClass + 18) % 12) - 6;
 
     if (accidental < -1 || accidental > 1) {
@@ -120,6 +122,8 @@ function scoreVoicing(strings: Array<number | null>): number {
   const span = max - min;
   const openCount = fretted.filter((fret) => fret === 0).length;
 
+  // Lower score = preferred. Position dominates (×3) so lower-fret shapes win;
+  // span penalises wide stretches (×4); open strings are a bonus (−1 each).
   return min * 3 + span * 4 - openCount;
 }
 
@@ -197,6 +201,8 @@ export function buildTabLines(strings: Array<number | null>): string[] {
 }
 
 export function buildPianoVoicing(root: RootNote, chordType: ChordType): number[] {
+  // Pitch classes 0–6 (C–F#) sit comfortably above middle C (60).
+  // Pitch classes 7–11 (G–B) would overshoot the display range, so drop an octave to 48.
   const rootMidi = root.pitchClass <= 6 ? 60 + root.pitchClass : 48 + root.pitchClass;
   return chordType.intervals.map((interval) => rootMidi + interval.semitones);
 }

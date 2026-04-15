@@ -17,6 +17,7 @@ export function PlaybackButton({ midiNotes }: PlaybackButtonProps) {
 
     try {
       await playChord(midiNotes);
+      // 1400ms matches the 1.35s audio duration plus a small buffer for the fade-out.
       window.setTimeout(() => setIsPlaying(false), 1400);
     } catch {
       setIsPlaying(false);
