@@ -46,6 +46,22 @@ describe('App', () => {
     expect(screen.getByText('Voicing 2 of 3')).toBeInTheDocument();
   });
 
+  it('resets to voicing 1 when the chord type changes', async () => {
+    const user = userEvent.setup();
+
+    render(<App />);
+
+    await user.click(screen.getByRole('button', { name: 'C' }));
+
+    await user.click(screen.getByRole('button', { name: /next guitar voicing/i }));
+    expect(screen.getByText('Voicing 2 of 3')).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: /^Cmin\b/i }));
+
+    // Switching chord type should snap back to the first voicing (the useEffect fires after render)
+    expect(await screen.findByText(/Voicing 1 of/)).toBeInTheDocument();
+  });
+
   it('keeps the selected root spelling consistent for split-note roots', async () => {
     const user = userEvent.setup();
 

@@ -8,6 +8,7 @@ import {
   getAlternateLongFormChordLabel,
   getChordLabel,
   getDiagramWindow,
+  getKeyboardRange,
   getLongFormChordLabel,
   spellChordNotes,
 } from './chords';
@@ -152,5 +153,32 @@ describe('diagram helpers', () => {
       'A|---3--',
       'E|---x--',
     ]);
+  });
+});
+
+describe('getKeyboardRange', () => {
+  const WHITE_PITCH_CLASSES = new Set([0, 2, 4, 5, 7, 9, 11]);
+
+  it('always starts and ends on a white key', () => {
+    // C major: C E G — all white keys, range should start and end cleanly
+    const range = getKeyboardRange([60, 64, 67]);
+    expect(WHITE_PITCH_CLASSES.has(range[0] % 12)).toBe(true);
+    expect(WHITE_PITCH_CLASSES.has(range[range.length - 1] % 12)).toBe(true);
+  });
+
+  it('shows at least 10 white keys so the chord does not feel cramped', () => {
+    // F# major: F# A# C# — black-heavy chord that needs range expansion
+    const range = getKeyboardRange([54, 58, 61]);
+    const whiteCount = range.filter((note) => WHITE_PITCH_CLASSES.has(note % 12)).length;
+    expect(whiteCount).toBeGreaterThanOrEqual(10);
+  });
+
+  it('includes all active notes in the range', () => {
+    // G dominant 7: G B D F
+    const midiNotes = [55, 59, 62, 65];
+    const range = getKeyboardRange(midiNotes);
+    midiNotes.forEach((note) => {
+      expect(range).toContain(note);
+    });
   });
 });
