@@ -138,7 +138,6 @@ export default function App() {
         ) : (
           <section className="hero-card hero-card--empty">
             <div className="hero-card__copy">
-              <p className="eyebrow">Welcome</p>
               <h2>Map chords across guitar and piano</h2>
               <p className="hero-card__description">
                 Browse curated chord variations for guitar and piano, then preview the notes and hear the

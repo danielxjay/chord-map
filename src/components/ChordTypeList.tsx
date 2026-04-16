@@ -20,7 +20,6 @@ export function ChordTypeList({
     <section className="panel">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">Step 2</p>
           <h2>Choose a variation</h2>
         </div>
         <div className="section-actions">

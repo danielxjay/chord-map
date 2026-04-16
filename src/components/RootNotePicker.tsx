@@ -11,7 +11,6 @@ export function RootNotePicker({ roots, selectedRootId, onSelect }: RootNotePick
     <section className="panel">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">Step 1</p>
           <h2>Pick a root note</h2>
           <p className="section-note section-note--mobile">Tap a note to load chord variations.</p>
         </div>
