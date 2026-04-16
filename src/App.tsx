@@ -85,7 +85,7 @@ export default function App() {
   return (
     <div className="app-shell">
       <header className="page-header">
-        <h1>Chord Map</h1>
+        <h1 onClick={() => { setSelectedRootId(null); setActiveStep('root'); }}>Chord Map</h1>
         <button
           className="theme-toggle"
           onClick={toggleTheme}
